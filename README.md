@@ -15,7 +15,8 @@ For handling scheduled data from a GTFS feed, MongoDB is perfect. The General Tr
 Info on GTFS: http://en.wikipedia.org/wiki/General_Transit_Feed_Specification
 
 In order for the module to work, the GTFS data must be in a folder in the directory of the script running the module. The data files should have the following names:
-
+Also please note: in the mongo shell, please run db.createCollection('nameOfCollection') for every collection you want to use this module for. The module assumes that each collection already
+exists, and acts accordingly. Without creating the empty collection beforehand, errors will prevent running.
 
 agency.txt;
 
