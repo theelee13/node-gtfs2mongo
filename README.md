@@ -89,7 +89,17 @@ getFrequency():
 getTransfers():
   pulls from destination/transfers.txt and stores collection under 'transfers'
 
+getFeedInfo():
+  pulls from destination/feed_info.txt and stores collection under 'feedinfo'
+  
+  
+getData
+=====
+Cannot be explicitly called. Called by the above functions where location and collectionName are
+defined distinctly in their call. getData does all of the work for reading/publishing to mongo.
 
-
+getData (location, collectionName):
+  read from csv file then connect to URL provided. Using name passed, delete any collection with 
+  that name and create a new one with the JSON information.
 
 
