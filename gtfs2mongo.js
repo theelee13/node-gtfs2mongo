@@ -47,6 +47,26 @@ module.exports={
 
 	getTrips: function (){
 		getData(dest+'/trips.txt','trips');
+	},
+
+	getFareRules: function (){
+		getData(dest+'/fare_rules.txt','farerules');
+	},
+
+	getFareAttributes: function (){
+		getData(dest+'/fare_attributes.txt','fareattributes');
+	},
+
+	getFrequency: function (){
+		getData(dest+'/frequencies.txt','frequencies');
+	},
+
+	getTransfers: function (){
+		getData(dest+'/transfers.txt','transfers');
+	},
+	
+	getFeedInfo: function (){
+		getData(dest+'/feed_info.txt','feedinfo');
 	}
 }
 
