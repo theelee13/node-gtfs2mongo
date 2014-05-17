@@ -84,7 +84,6 @@ getData = function (loc,cName){
 		var getstoptimeData = jsonObj["csvRows"];
 		MongoClient.connect(url, function(err, db) {
 			if(err) throw err;
-			console.log('hi');
 			db.dropCollection(cName, function(err,res){
 				if(err) throw err;
 			});
