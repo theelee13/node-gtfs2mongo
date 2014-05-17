@@ -2,3 +2,94 @@ gtfs2mongo
 ==========
 
 Pushes provided GTFS text/csv files into a collection of a specified MongoDB database.
+
+Concept
+===
+
+For handling scheduled data from a GTFS feed, MongoDB is perfect. The General Transit Feed Specification format uses Comma Separated Values (csv), which node can read using the csvtojson module. Then, using the native MongoDB module, the JSON can be recorded into a collection in a specified database. 
+
+Info on GTFS: http://en.wikipedia.org/wiki/General_Transit_Feed_Specification
+
+In order for the module to work, the GTFS data must be in a folder in the directory of the script running the module. The data files should have the following names:
+
+
+agency.txt;
+
+stops.txt;
+
+routes.txt;
+
+trips.txt;
+
+stop_times.txt;
+
+calendar.txt;
+
+calendar_dates.txt;
+
+fare_attributes.txt;
+
+fare_rules.txt;
+
+shapes.txt;
+
+frequencies.txt;
+
+transfers.txt;
+
+feed_info.txt;
+
+The module doesn't check to see if the files exist, it only reads what you specify through specific functions.
+
+Function Overview
+========
+
+setURL (url):
+  Sets global URL value 
+  
+URL MUST FOLLOW MONGODB PROTOCOL:   mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
+read more here: http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html 
+  
+setGTFSFolder (destination):
+  Declares folder for finding the CSV files. Default is './data'
+  
+getAgency():
+  pulls from destination/agency.txt and stores collection under 'agency'
+  
+getCalendar():
+  pulls from destination/calendar.txt and stores collection under 'calendar'
+  
+getCalendarDates():
+  pulls from destination/calendar_dates.txt and stores collection under 'calendardates'
+  
+getRoutes():
+  pulls from destination/routes.txt and stores collection under 'routes'
+  
+getShapes():
+  pulls from destination/shapes.txt and stores collection under 'shapes'
+  
+getStopTimes():
+  pulls from destination/stop_times.txt and stores collection under 'stoptimes'
+
+getStops():
+  pulls from destination/stops.txt and stores collection under 'stops'
+
+getTrips():
+  pulls from destination/trips.txt and stores collection under 'trips'
+
+getFareRules():
+  pulls from destination/fare_rules.txt and stores collection under 'farerules'
+
+getFareAttributes():
+  pulls from destination/fare_attributes.txt and stores collection under 'fareattributes'
+
+getFrequency():
+  pulls from destination/frequencies.txt and stores collection under 'frequencies'
+  
+getTransfers():
+  pulls from destination/transfers.txt and stores collection under 'transfers'
+
+
+
+
+
