@@ -102,4 +102,26 @@ getData (location, collectionName):
   read from csv file then connect to URL provided. Using name passed, delete any collection with 
   that name and create a new one with the JSON information.
 
+Example Usage
+========
+var gtfs = require('gtfs2mongo');
+gtfs.setGTFSFolder('./gtfsFiles'); //set from default to ./gtfsFiles
+gtfs.setURL('mongodb://localhost:3001/meteor'); //Using Meteor, Mongodb usually on port 3001, not default 27017.
+gtfs.getAgency();
+
+Result in console:
+
+Recorded _id: 5377900708f133671addcf09
+
+
+Result on MongoDB: (results are from MARTA)
+
+{ "agency_id" : "MARTA", "agency_name" : "Metropolitan Atlanta Rapid Transit Authority", "agency_url" : "http://www.itsmarta.com", "agency_timezone" : "America/New_York", "agency_lang" : "en", "agency_phone" : "", "_id" : ObjectId("5377900708f133671addcf09") }
+
+
+
+
+
+
+
 
