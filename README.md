@@ -15,8 +15,6 @@ For handling scheduled data from a GTFS feed, MongoDB is perfect. The General Tr
 Info on GTFS: http://en.wikipedia.org/wiki/General_Transit_Feed_Specification
 
 In order for the module to work, the GTFS data must be in a folder in the directory of the script running the module. The data files should have the following names:
-Also please note: in the mongo shell, please run db.createCollection('nameOfCollection') for every collection you want to use this module for. The module assumes that each collection already
-exists, and acts accordingly. Without creating the empty collection beforehand, errors will prevent running.
 
 agency.txt;
 
@@ -44,80 +42,31 @@ transfers.txt;
 
 feed_info.txt;
 
-The module doesn't check to see if the files exist, it only reads what you specify through specific functions.
-
 Function Overview
 ========
 
-setURL (url):
-  Sets global URL value 
-  
-URL MUST FOLLOW MONGODB PROTOCOL:   mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
-read more here: http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html 
-  
-setGTFSFolder (destination):
-  Declares folder for finding the CSV files. Default is './data'
-  
-getAgency():
-  pulls from destination/agency.txt and stores collection under 'agency'
-  
-getCalendar():
-  pulls from destination/calendar.txt and stores collection under 'calendar'
-  
-getCalendarDates():
-  pulls from destination/calendar_dates.txt and stores collection under 'calendardates'
-  
-getRoutes():
-  pulls from destination/routes.txt and stores collection under 'routes'
-  
-getShapes():
-  pulls from destination/shapes.txt and stores collection under 'shapes'
-  
-getStopTimes():
-  pulls from destination/stop_times.txt and stores collection under 'stoptimes'
+convert( gtfsFileLocation, DBI, collectionName, callback(err,obID))
 
-getStops():
-  pulls from destination/stops.txt and stores collection under 'stops'
+gtfsFileLocation is the location of the .txt file (in reference to current directory) to pull GTFS data from.
 
-getTrips():
-  pulls from destination/trips.txt and stores collection under 'trips'
+DBI is the "url" of the database, which follows the syntax noted here: http://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html
 
-getFareRules():
-  pulls from destination/fare_rules.txt and stores collection under 'farerules'
+The collectionName is whatever you want to name the collection. 
 
-getFareAttributes():
-  pulls from destination/fare_attributes.txt and stores collection under 'fareattributes'
-
-getFrequency():
-  pulls from destination/frequencies.txt and stores collection under 'frequencies'
-  
-getTransfers():
-  pulls from destination/transfers.txt and stores collection under 'transfers'
-
-getFeedInfo():
-  pulls from destination/feed_info.txt and stores collection under 'feedinfo'
-  
-  
-getData
-=====
-Cannot be explicitly called. Called by the above functions where location and collectionName are
-defined distinctly in their call. getData does all of the work for reading/publishing to mongo.
-
-getData (location, collectionName):
-  read from csv file then connect to URL provided. Using name passed, delete any collection with 
-  that name and create a new one with the JSON information.
+callback stores (upon successful operation) the objectID field value into obID.
 
 Example Usage
 ========
 var gtfs = require('gtfs2mongo');
-gtfs.setGTFSFolder('./gtfsFiles'); //set from default to ./gtfsFiles
-gtfs.setURL('mongodb://localhost:3001/meteor'); //Using Meteor, Mongodb usually on port 3001, not default 27017.
-gtfs.getAgency();
+gtfs.convert('./data/agency.txt','mongodb://localhost:3001/meteor','agency',function (err,obID){
+  if(err) throw err;
+  console.log(obID);
+});
+
 
 Result in console:
 
-Recorded _id: 5377900708f133671addcf09
-
+5377900708f133671addcf09
 
 Result on MongoDB: (results are from MARTA)
 
