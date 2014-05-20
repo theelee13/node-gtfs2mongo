@@ -1,10 +1,10 @@
 {
   "name": "gtfs2mongo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pushes provided GTFS text/csv files into a collection of a specified MongoDB database.",
   "main": "gtfs2mongo.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
   "bugs": {
     "url": "https://github.com/theelee13/gtfs2mongo/issues"
   },
-  "homepage": "https://github.com/theelee13/gtfs2mongo"
+  "homepage": "https://github.com/theelee13/gtfs2mongo",
+  "dependencies": {
+    "mongodb": "^1.4.4",
+    "csv-parse": "0.0.3"
+  }
 }
