@@ -28,10 +28,10 @@ The callback provides error information only,
 Example Usage
 ========
 
-''''
+````
 var gtfs = require('gtfs2mongo');
 gtfs.convert('data','mongodb://localhost:3001/meteor',function (err){
   if(err) throw err;
 });
 process.exit();
-''''
+````
