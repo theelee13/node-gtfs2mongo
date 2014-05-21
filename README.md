@@ -46,4 +46,4 @@ gtfs.convert('data','mongodb://localhost:3001/meteor',function (err){
 process.exit();
 ````
 
-Please note that fare_rules may *not* properly complete the upsert operation. Support for this file will be included in a future update. If necessary, include the ability to upsert by two separate fields.
+Please note that both shapes and fare_rules may *not* properly complete the upsert operation. Support for this file will be included in a future update. If necessary, include the ability to upsert by two separate fields.
