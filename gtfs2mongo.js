@@ -71,17 +71,17 @@ core = function (fileLoc,DBI,i,callback){
 	});
 }
 fileMap = [
-	{'fName':'agency.txt','cName':'agency','uID':'agency_name'},
-	{'fName':'calendar.txt','cName':'calendar','uID':'service_id'},
-	{'fName':'calendar_dates.txt','cName':'calendar_dates','uID':'service_id'},
-	{'fName':'stops.txt','cName':'stops','uID':'stop_id'},
-	{'fName':'routes.txt','cName':'routes','uID':'route_id'},
-	{'fName':'trips.txt','cName':'trips','uID':'trip_id'},
-	{'fName':'stop_times.txt','cName':'stop_times','uID':'trip_id'},
-	{'fName':'fare_attributes.txt','cName':'fare_attributes','uID':'fare_id'},
-	{'fName':'fare_rules.txt','cName':'fare_rules','uID':'fare_id'},
+	{'fName':'agency.txt','cName':'agency','uID':['agency_name']},
+	{'fName':'calendar.txt','cName':'calendar','uID':['service_id']},
+	{'fName':'calendar_dates.txt','cName':'calendar_dates','uID':['service_id']},
+	{'fName':'stops.txt','cName':'stops','uID':['stop_id']},
+	{'fName':'routes.txt','cName':'routes','uID':['route_id']},
+	{'fName':'trips.txt','cName':'trips','uID':['trip_id']},
+	{'fName':'stop_times.txt','cName':'stop_times','uID':['trip_id']},
+	{'fName':'fare_attributes.txt','cName':'fare_attributes','uID':['fare_id']},
+	{'fName':'fare_rules.txt','cName':'fare_rules','uID':['fare_id']},
 	{'fName':'shapes.txt','cName':'shapes','uID':['shape_id','shape_pt_sequence']},
-	{'fName':'frequencies.txt','cName':'frequencies','uID':'trip_id'},
-	{'fName':'transfers.txt','cName':'transfers','uID':'from_stop_id'},
-	{'fName':'feed_info.txt','cName':'feed_info','uID':'feed_publisher_name'}
+	{'fName':'frequencies.txt','cName':'frequencies','uID':['trip_id']},
+	{'fName':'transfers.txt','cName':'transfers','uID':['from_stop_id']},
+	{'fName':'feed_info.txt','cName':'feed_info','uID':['feed_publisher_name']}
 ]
