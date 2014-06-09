@@ -27,6 +27,15 @@ put = function (rec,match,collection,callback){
 	});
 }
 
+matchFromArray = function (record,i){
+	matchObject = {}
+	for(var j =0;j<fileMap[i]["uID"].length;j++){
+		var ident1 = fileMap[i]["uID"][j];
+		matchObject[ident1]=record[ident1]
+	}
+	return matchObject;
+}
+
 core = function (fileLoc,DBI,i,callback){
 	var filestream = fs.createReadStream(fileLoc);;
 	MongoClient.connect(DBI, function(err, db) {
@@ -38,9 +47,7 @@ core = function (fileLoc,DBI,i,callback){
 		var parser = parse({ columns:true});	//columns interprets first line as set of fields.
 		parser.on('data',function(record){
 			parser.pause();
-			var ident1 = fileMap[i]["uID"];
-			var match = {};
-			match[ident1]=record[ident1];
+			match=matchFromArray(record,i);
 			put(record,match,collection,function(err){
 				if(err){
 					db.close();
@@ -73,7 +80,7 @@ fileMap = [
 	{'fName':'stop_times.txt','cName':'stop_times','uID':'trip_id'},
 	{'fName':'fare_attributes.txt','cName':'fare_attributes','uID':'fare_id'},
 	{'fName':'fare_rules.txt','cName':'fare_rules','uID':'fare_id'},
-	{'fName':'shapes.txt','cName':'shapes','uID':'shape_id'},
+	{'fName':'shapes.txt','cName':'shapes','uID':['shape_id','shape_pt_sequence']},
 	{'fName':'frequencies.txt','cName':'frequencies','uID':'trip_id'},
 	{'fName':'transfers.txt','cName':'transfers','uID':'from_stop_id'},
 	{'fName':'feed_info.txt','cName':'feed_info','uID':'feed_publisher_name'}
