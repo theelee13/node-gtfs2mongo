@@ -7,7 +7,6 @@ var fs = require('fs');
 var count = 0;
 module.exports={
 	convert: function(loc,DBI,callback){
-		var arr = [];
 		for(var i = 0;i<13;i++){
 			var fileLoc = './'+loc+'/'+fileMap[i]["fName"];
 			if(fs.existsSync(fileLoc)){

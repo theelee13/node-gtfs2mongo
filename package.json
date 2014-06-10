@@ -1,6 +1,6 @@
 {
   "name": "gtfs2mongo",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "Pushes provided GTFS text/csv files into a collection of a specified MongoDB database.",
   "main": "gtfs2mongo.js",
   "scripts": {
