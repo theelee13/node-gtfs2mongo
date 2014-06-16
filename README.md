@@ -14,6 +14,10 @@ For handling scheduled data from a GTFS feed, MongoDB is perfect. The General Tr
 
 Info on GTFS: http://en.wikipedia.org/wiki/General_Transit_Feed_Specification
 
+Efficiency
+===
+On my 2010 Macbook Pro with 2.53 GHz i5 and 4GB 1067MHz DDR3, the module uploads at a rate of about 1054 documents per minute on average. Best case approaches 1300, worst hits about 700.
+
 Function Overview
 ========
 
