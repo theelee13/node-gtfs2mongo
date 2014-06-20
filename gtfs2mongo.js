@@ -20,13 +20,13 @@ module.exports={
 		}
 	}
 }
-put = function (rec,match,collection,callback){
+var put = function (rec,match,collection,callback){
 	collection.update(match,rec,{upsert:true}, function (err,record){
 		return callback(err);
 	});
 }
 
-matchFromArray = function (record,i){
+var matchFromArray = function (record,i){
 	matchObject = {}
 	for(var j =0;j<fileMap[i]["uID"].length;j++){
 		var ident1 = fileMap[i]["uID"][j];
@@ -35,7 +35,7 @@ matchFromArray = function (record,i){
 	return matchObject;
 }
 
-core = function (fileLoc,DBI,i,callback){
+var core = function (fileLoc,DBI,i,callback){
 	var filestream = fs.createReadStream(fileLoc);
 	MongoClient.connect(DBI, function(err, db) {
 		console.log('Connected to '+DBI+' for file '+fileLoc);
@@ -69,7 +69,7 @@ core = function (fileLoc,DBI,i,callback){
 		filestream.pipe(parser);
 	});
 }
-fileMap = [
+var fileMap = [
 	{'fName':'agency.txt','cName':'agency','uID':['agency_name']},
 	{'fName':'calendar.txt','cName':'calendar','uID':['service_id']},
 	{'fName':'calendar_dates.txt','cName':'calendar_dates','uID':['service_id']},
