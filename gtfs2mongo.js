@@ -36,7 +36,7 @@ matchFromArray = function (record,i){
 }
 
 core = function (fileLoc,DBI,i,callback){
-	var filestream = fs.createReadStream(fileLoc);;
+	var filestream = fs.createReadStream(fileLoc);
 	MongoClient.connect(DBI, function(err, db) {
 		console.log('Connected to '+DBI+' for file '+fileLoc);
 		if(err){
