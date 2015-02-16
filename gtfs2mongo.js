@@ -76,7 +76,7 @@ var fileMap = [
 	{'fName':'stops.txt','cName':'stops','uID':['stop_id']},
 	{'fName':'routes.txt','cName':'routes','uID':['route_id']},
 	{'fName':'trips.txt','cName':'trips','uID':['trip_id']},
-	{'fName':'stop_times.txt','cName':'stop_times','uID':['trip_id']},
+	{'fName':'stop_times.txt','cName':'stop_times','uID':['trip_id','stop_id']},
 	{'fName':'fare_attributes.txt','cName':'fare_attributes','uID':['fare_id']},
 	{'fName':'fare_rules.txt','cName':'fare_rules','uID':['fare_id']},
 	{'fName':'shapes.txt','cName':'shapes','uID':['shape_id','shape_pt_sequence']},
