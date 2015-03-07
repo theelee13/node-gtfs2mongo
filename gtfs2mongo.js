@@ -8,7 +8,7 @@ var count = 0;
 module.exports={
 	convert: function(loc,DBI,callback){
 		for(var i = 0;i<13;i++){
-			var fileLoc = './'+loc+'/'+fileMap[i]["fName"];
+			var fileLoc = loc+'/'+fileMap[i]["fName"];
 			if(fs.existsSync(fileLoc)){
 				console.log(fileLoc+' found. Reading from file.');
 				count++;
